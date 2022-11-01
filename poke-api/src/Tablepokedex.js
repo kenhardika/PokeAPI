@@ -1,6 +1,9 @@
 import React from 'react';
 import Table from 'react-bootstrap/esm/Table';
-function Tablepokedex(props) {
+
+
+function Tablepokedex({data}) {
+  console.log(data);
     return (
         <div className='tablePokedex'>
         <Table striped bordered hover>
@@ -11,28 +14,23 @@ function Tablepokedex(props) {
               <th>Base Experience</th>
               <th>Location_area_encounters</th>
               <th>Actions</th>
-
             </tr>
           </thead>
           <tbody>
-            <tr>
+            {
+              data.results.map((res)=>
+              <tr>
+                <td>"ID"</td> 
+                <td>{res.name}</td> 
+              </tr> )
+            }
+            {/* <tr>
               <td>1</td>
               <td>Mark</td>
               <td>Otto</td>
               <td>@mdo</td>
               <td> ability + status </td>
-            </tr>
-            <tr>
-              <td>2</td>
-              <td>Jacob</td>
-              <td>Thornton</td>
-              <td>@fat</td>
-            </tr>
-            <tr>
-              <td>3</td>
-              <td >Larry the Bird</td>
-              <td>@twitter</td>
-            </tr>
+            </tr> */}
           </tbody>
         </Table>
         </div>

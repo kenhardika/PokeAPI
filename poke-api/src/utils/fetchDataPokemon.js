@@ -1,12 +1,13 @@
 import axios from 'axios';
 
-function fetchDataPokemon(){
-const url = '';
-    axios.get(url)
-    .then((data)=>{
-        console.log(data);
-        return data
-    }).catch({})
+function fetchDataPokemon(link){
+    try{
+        const responseAPI = axios.get(link);
+        return responseAPI;
+    }
+    catch{
+        throw Error('Error Fetch API')
+    }
 }
 
 export default fetchDataPokemon
