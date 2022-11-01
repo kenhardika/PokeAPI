@@ -1,0 +1,17 @@
+@import "~bootstrap/scss/bootstrap";
+
+*{
+  margin: 0;
+  background-color: rgb(249, 249, 249);
+
+}
+.App {
+  text-align: center;
+}
+
+.tablePokedex{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
