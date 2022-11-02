@@ -7,7 +7,6 @@ function StatusModal({data}) {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-    console.log(data);
   return (
     <div>
       <Button variant="info" onClick={handleShow}>
