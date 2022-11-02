@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-function fetchBaseExpPokemon(offset){
+function fetchPokemon(offset){
     try{
         let responseArray = [];
         const LIMITTABLE = 19;
@@ -8,12 +8,6 @@ function fetchBaseExpPokemon(offset){
             const responseAPI = axios.get(`https://pokeapi.co/api/v2/pokemon/${i}/`);
             responseArray.push(responseAPI);
         }
-        // Promise.all(responseArray).then((item)=>{
-        //     console.log(item)
-        //     // responseArray = responseArray.push(item);
-        // })
-        // console.log(responseArray)
-        // console.log(responseArray)
         return Promise.all(responseArray)
     }
     catch{
@@ -21,4 +15,4 @@ function fetchBaseExpPokemon(offset){
     }
 }
 
-export default fetchBaseExpPokemon
+export default fetchPokemon

@@ -1,11 +1,8 @@
 import axios from 'axios';
 
-function fetchLocEncounter(link){
+function fetchLinkPokemon(link){
     try{
         const responseAPI = axios.get(link);
-        // responseAPI.then((item)=>{
-        //    return item
-        // });
         return responseAPI
     }
     catch{
@@ -13,4 +10,4 @@ function fetchLocEncounter(link){
     }
 }
 
-export default fetchLocEncounter
+export default fetchLinkPokemon

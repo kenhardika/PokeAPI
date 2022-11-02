@@ -2,9 +2,9 @@ import { useCallback, useEffect, useState } from 'react';
 import './App.scss';
 import TableNavigation from './TableNavigation';
 import Tablepokedex from './Tablepokedex';
-import fetchBaseExpPokemon from './utils/fetchBaseExpPokemon';
-import fetchDataPokemon from './utils/fetchDataPokemon';
-import fetchLocEncounter from './utils/fetchLocEncounter';
+import fetchPokemon from './utils/fetchPokemon';
+import fetchDataNavigatePokemon from './utils/fetchDataNavigatePokemon';
+import fetchLinkPokemon from './utils/fetchLinkPokemon';
 
 
 function App() {
@@ -15,30 +15,20 @@ function App() {
   const fetchData = useCallback( async ()=>{
     let arrayData = [];
             try{
-              const responseNavigate = await fetchDataPokemon(offsetPage);
-              const responseBase = await fetchBaseExpPokemon(offsetPage + INITIAL_FETCH);
-              // const responseLoc = async (link) => await fetchLocEncounter(link);
+              const responseNavigate = await fetchDataNavigatePokemon(offsetPage); // for navigate purpose
+              const responseBase = await fetchPokemon(offsetPage + INITIAL_FETCH); //base exp is base data for our table, id, name, base exp.
               setNavigateTable(responseNavigate.data);              
               responseBase.map((item)=>{
-                // console.log(item.data);
                 return arrayData.push(item.data);
-               
               });
-              // console.log(arrayData);
-              // arrayData.forEach((item)=>{
-              //   const loc = fetchLocEncounter(item.location_area_encounters);
-              //   item.location_area_encounters = loc;
-              // });
-
                 for(const data of arrayData){
-                  const location = await fetchLocEncounter(data.location_area_encounters);
+                  const location = await fetchLinkPokemon(data.location_area_encounters);
                   data.location_area_encounters = location;
+                  for(const ability of data.abilities){
+                    const abils = await fetchLinkPokemon(ability.ability.url);
+                    ability.ability.url = abils;
+                  }
                 }
-
-              // console.log(arrayData[0].location_area_encounters.then((item)=>{console.log(item)}));
-              // const responseName = await fetchDataPokemon(offsetPage);
-              // const responseLoc = await fetchLocEncounter(offsetPage + INITIAL_FETCH);
-              // console.log(responseBase);
               setPokedex(arrayData);
               return;
             }
@@ -70,9 +60,7 @@ function App() {
    fetchData(); 
   }, [fetchData])
 
-  console.log(navigateTable); 
   // console.log(pokedex);
-  // console.log(arrayData);
   return (
     <div className="App">
       {

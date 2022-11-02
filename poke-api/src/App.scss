@@ -2,9 +2,8 @@
 
 *{
   margin: 0;
-  background-color: rgb(249, 249, 249);
-
 }
+
 .App {
   text-align: center;
 }
@@ -14,4 +13,30 @@
   align-items: center;
   justify-content: center;
   padding: 20px;
+}
+.fade{
+  background-color: transparent;
+}
+.modal-backdrop.show {
+  background-color: transparent;
+}
+
+.custom-dialog {
+  width:300px !important; 
+  top:20px;
+  left:40%;
+}
+
+tr{
+// display: flex;
+// align-items: center;
+// justify-content: center;
+  .layerButton{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+  }
+
 }

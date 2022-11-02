@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-function fetchDataPokemon(offset){
+function fetchNavigatePokemon(offset){
     try{
         const responseAPI = axios.get(`https://pokeapi.co/api/v2/pokemon/?limit=20&offset=${offset}`);
         return responseAPI;
@@ -10,4 +10,4 @@ function fetchDataPokemon(offset){
     }
 }
 
-export default fetchDataPokemon
+export default fetchNavigatePokemon

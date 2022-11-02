@@ -1,10 +1,13 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { } from 'react';
 import Table from 'react-bootstrap/esm/Table';
 import uniqid from "uniqid";
-import fetchDataPokemon from './utils/fetchDataPokemon';
+import AbilityModal from './components/AbilityModal';
+import StatusModal from './components/StatusModal';
+
 
 function Tablepokedex({data}) {
   // console.log(data[0].location_area_encounters.data[0].location_area.name);
+  console.log(data);
     return (
         <div className='tablePokedex'>
         <Table striped bordered hover>
@@ -24,19 +27,11 @@ function Tablepokedex({data}) {
                 <td key={uniqid()}>{res.id}</td>
                 <td key={uniqid()}>{res.name}</td>
                 <td key={uniqid()}>{res.base_experience}</td>
-                <td key={uniqid()}> {res.location_area_encounters.data.map((item)=> item.location_area.name + '')} </td>
+                <td width={'60%'} key={uniqid()}> {res.location_area_encounters.data.map((item)=> item.location_area.name + ', ')} </td>
+                <td className='layerButton'> <AbilityModal /> <StatusModal/></td>
               </tr>)
             }
-            { 
-              // :
-              // <p>loading</p>
-              /* <tr>
-              <td>1</td>
-              <td>Mark</td>
-              <td>Otto</td>
-              <td>@mdo</td>
-              <td> ability + status </td>
-            </tr> */}
+            
           </tbody>
         </Table>
         </div>
