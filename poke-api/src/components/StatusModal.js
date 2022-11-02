@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import uniqid from 'uniqid';
 
-function StatusModal() {
+function StatusModal({data}) {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-
+    console.log(data);
   return (
     <div>
       <Button variant="info" onClick={handleShow}>
@@ -17,7 +18,13 @@ function StatusModal() {
           <Modal.Title>Status:</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-            Woohoo, you're reading this text in a modal!
+            {
+             data.map((item)=>{
+                return   <article key={uniqid()}>
+                             <h5 key={uniqid()}> {item.stat.name}: {item.base_stat} </h5>
+                         </article>
+             })
+             }
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>

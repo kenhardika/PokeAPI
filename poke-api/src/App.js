@@ -60,13 +60,12 @@ function App() {
    fetchData(); 
   }, [fetchData])
 
-  // console.log(pokedex);
   return (
     <div className="App">
       {
         Object.keys(pokedex).length?
         <Tablepokedex data = {pokedex}/> :
-        <p>Loadnig</p> 
+        <p>Loading</p> 
       }
       <TableNavigation handlePrevPage={handlePrevPage} handleNextPage={handleNextPage} />
     </div>

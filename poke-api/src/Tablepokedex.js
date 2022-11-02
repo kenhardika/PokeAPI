@@ -7,7 +7,7 @@ import StatusModal from './components/StatusModal';
 
 function Tablepokedex({data}) {
   // console.log(data[0].location_area_encounters.data[0].location_area.name);
-  console.log(data);
+  // console.log(data);
     return (
         <div className='tablePokedex'>
         <Table striped bordered hover>
@@ -28,7 +28,9 @@ function Tablepokedex({data}) {
                 <td key={uniqid()}>{res.name}</td>
                 <td key={uniqid()}>{res.base_experience}</td>
                 <td width={'60%'} key={uniqid()}> {res.location_area_encounters.data.map((item)=> item.location_area.name + ', ')} </td>
-                <td className='layerButton'> <AbilityModal /> <StatusModal/></td>
+                <td className='layerButton'>
+                    <AbilityModal data={res.abilities}/> <StatusModal data={res.stats}/>
+                </td>
               </tr>)
             }
             
