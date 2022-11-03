@@ -42,7 +42,7 @@ function App() {
   return (
     <div className="App">
       {
-        Object.keys(pokedex).length?
+        Object.keys(pokedex.results).length?
         <Tablepokedex data = {pokedex.results}/> :
         <p>Loading</p> 
       }
